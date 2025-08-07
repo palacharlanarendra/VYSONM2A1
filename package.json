@@ -1,0 +1,24 @@
+{
+  "name": "vysonm2a1",
+  "version": "1.0.0",
+  "description": "VYSONM2A1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/palacharlanarendra/VYSONM2A1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/palacharlanarendra/VYSONM2A1/issues"
+  },
+  "homepage": "https://github.com/palacharlanarendra/VYSONM2A1#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  }
+}
