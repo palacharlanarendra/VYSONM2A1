@@ -173,6 +173,10 @@ npm run test
 ```
 * this will run test file. 
 
+Here’s the project screenshot:
+
+![App Screenshot](k6-tests/redirect/2k_vu_redirect.png)
+
 ## 📂 Notes
 
 * Sending the same URL multiple times returns the same short code.
