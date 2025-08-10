@@ -19,6 +19,7 @@
   "homepage": "https://github.com/palacharlanarendra/VYSONM2A1#readme",
   "dependencies": {
     "express": "^5.1.0",
+    "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
