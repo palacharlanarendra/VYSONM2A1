@@ -3,7 +3,6 @@ const { Sequelize, DataTypes } = require("sequelize");
 if (process.env.DATABASE_URL) {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: "postgres",
-    protocol: "postgres",
     dialectOptions: {
       ssl: { require: true, rejectUnauthorized: false }
     },
