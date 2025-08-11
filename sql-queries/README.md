@@ -175,7 +175,62 @@ npm run test
 
 Here’s the project screenshot:
 
-![App Screenshot](k6-tests/redirect/2k_vu_redirect.png)
+10 vus - redirect
+![App Screenshot](k6-tests/redirect/10.png)
+
+50 vus - redirect
+![App Screenshot](k6-tests/redirect/50.png)
+
+100 vus - redirect
+![App Screenshot](k6-tests/redirect/100.png)
+
+200 vus - redirect
+![App Screenshot](k6-tests/redirect/200.png)
+
+500 vus - redirect
+![App Screenshot](k6-tests/redirect/500.png)
+
+1k vus - redirect
+![App Screenshot](k6-tests/redirect/1000.png)
+
+2k vus - redirect
+![App Screenshot](k6-tests/redirect/2k.png)
+
+4k vus - redirect
+![App Screenshot](k6-tests/redirect/4k.png)
+
+8k vus - redirect
+![App Screenshot](k6-tests/redirect/8k.png)
+
+16k vus - redirect
+![App Screenshot](k6-tests/redirect/16k.png)
+
+10 vus - shorten
+![App Screenshot](k6-tests/shorten/10.png)
+
+50 vus - shorten
+![App Screenshot](k6-tests/shorten/50.png)
+
+100 vus - shorten
+![App Screenshot](k6-tests/shorten/100.png)
+
+200 vus - shorten
+![App Screenshot](k6-tests/shorten/200.png)
+
+500 vus - shorten
+![App Screenshot](k6-tests/shorten/500.png)
+
+1k vus - shorten
+![App Screenshot](k6-tests/shorten/1000.png)
+
+2k vus - shorten
+![App Screenshot](k6-tests/shorten/2k.png)
+
+4k vus - shorten
+![App Screenshot](k6-tests/shorten/4k.png)
+
+8k vus - shorten
+![App Screenshot](k6-tests/shorten/8k.png)
 
 ## 📂 Notes
 
