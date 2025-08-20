@@ -1,0 +1,4 @@
+-- database: ./sqlite.db
+
+SELECT * FROM url_shortner
+ORDER BY `id` DESC;

@@ -11,37 +11,30 @@ app.use(express.json());
 app.post("/shorten", async (req, res) => {
   const inputUrl = req.body.url;
 
+  if (!inputUrl || inputUrl.trim() === ''){
+    return res.status(400).json({ error: 'Input URI cannot be empty!' });
+  }
+
+  let generatedShortCode = generateShortCode();
+
   try {
-    const existingShortCode = await UrlShortner.findOne({
-      where: { original_url: inputUrl },
+    const newUrl = await UrlShortner.create({
+      original_url: inputUrl,
+      short_code: generatedShortCode
     });
-
-    if (existingShortCode) {
-      return res.json({ short_code: existingShortCode.short_code });
-    }
-
-    let generatedShortCode = generateShortCode();
-
-    try {
+    return res.status(200).json({
+      short_code: newUrl.short_code
+    })
+  } catch (err) {
+    if (err.name === "SequelizeUniqueConstraintError") {
+      generatedShortCode = generateShortCode();
       await UrlShortner.create({
         original_url: inputUrl,
         short_code: generatedShortCode
       })
-    } catch (err) {
-      if (err.name === "SequelizeUniqueConstraintError") {
-        generatedShortCode = generateShortCode();
-        await UrlShortner.create({
-          original_url: inputUrl,
-          short_code: generatedShortCode
-        })
-      } else {
-        throw err;
-      }
+    } else {
+      res.status(500).json({ error: error.message });
     }
-    res.json({ short_code: generatedShortCode });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
   }
 });
 
@@ -56,12 +49,18 @@ app.get("/redirect", async (req, res) => {
     const rowData = await UrlShortner.findOne({
       where: { short_code: shortCode },
     });
+    if (rowData) {
+      await rowData.update({
+        click_count: Number(rowData.click_count) + 1,
+        last_accessed_at: new Date()
+      })
+    }
     if (!rowData) {
       return res.status(404).json({ error: "Short code not found" });
     }
     return res.status(200).json({ url: rowData.original_url });
   } catch (error) {
-    req.status(500).json({ error: "Database Error" });
+    res.status(500).json({ error: error.message});
   }
 });
 

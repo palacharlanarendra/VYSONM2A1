@@ -22,13 +22,20 @@ const UrlShortner = sequelize.define(
     original_url: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     short_code: {
       type: DataTypes.STRING(6),
       allowNull: false,
       unique: true,
     },
+    click_count: {
+      type: DataTypes.STRING,
+      default: 0,
+    },
+    last_accessed_at: {
+      type: DataTypes.DATE,
+      allowNull: true
+    }
   },
   {
     tableName: "url_shortner",
@@ -36,4 +43,33 @@ const UrlShortner = sequelize.define(
   }
 );
 
-module.exports = { sequelize, UrlShortner };
+const User = sequelize.define('User', {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    optional: true
+  },
+  api_key: {
+    type: DataTypes.STRING,
+    unique: true
+  },
+},
+{
+  tableName: "user"
+}
+);
+
+UrlShortner.belongsTo(User, { foreignKey: "user_id" });
+
+module.exports = { sequelize, UrlShortner, User };

@@ -18,24 +18,15 @@ describe("API Integration Tests", () => {
     expect(redirectResponse.statusCode).toBe(200);
     expect(redirectResponse.body).toHaveProperty("url", "https://example.com/");
   });
-  it("duplicate URL", async () => {
+  it("empty URL", async () => {
     const response = await request(app)
       .post("/shorten")
-      .send({ url: "https://example2.com/" });
-    expect(response.statusCode).toBe(200);
-    expect(response.body).toHaveProperty("short_code");
-    expect(response.body.short_code.length).toBe(6);
-    const shortCode = response.body.short_code;
-
-    const response2 = await request(app)
-      .post("/shorten")
-      .send({ url: "https://example2.com/" });
-    expect(response2.statusCode).toBe(200);
-    expect(response2.body).toHaveProperty("short_code");
-    expect(response2.body.short_code.length).toBe(6);
-    const shortCode2 = response2.body.short_code;
-
-    expect(shortCode).toEqual(shortCode2);
+      .send({ url: "" });
+    expect(response.statusCode).toBe(400);
+    expect(response.body).toHaveProperty(
+      "error",
+      "Input URI cannot be empty!"
+    );
   });
   it("Short code not existed", async () => {
     const shortCode = "YYYYYY";

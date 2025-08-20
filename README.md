@@ -65,14 +65,6 @@ If the URL already exists in the database, it will return the existing short cod
 }
 ```
 
-**Response Example (URL already exists):**
-
-```json
-{
-  "short_code": "abc123"
-}
-```
-
 **Response Example (New short code):**
 
 ```json
