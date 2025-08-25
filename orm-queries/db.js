@@ -35,6 +35,19 @@ const UrlShortner = sequelize.define(
     last_accessed_at: {
       type: DataTypes.DATE,
       allowNull: true
+    },
+    expiry_date: {
+      type: DataTypes.DATE,
+      optional: true,
+      allowNull: true
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    isDeleted: {
+      type: DataTypes.BOOLEAN,
+      default: false
     }
   },
   {
@@ -64,9 +77,14 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     unique: true
   },
+  tier: {
+    type: DataTypes.STRING,
+    default: 'hobby'
+  },
 },
 {
-  tableName: "user"
+  tableName: "user",
+  timestamps: true,
 }
 );
 
