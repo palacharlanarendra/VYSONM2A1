@@ -289,6 +289,10 @@ app.post("/shorten/bulk", async (req, res) => {
   return res.status(207).json({ results });
 });
 
+app.get("/health", async (req, res) => {
+  return res.status(200).json({ success: "working!" });
+})
+
 app.listen(port, () => {
   console.log(`🚀 App running on port ${port}`);
 });
